@@ -1,34 +1,27 @@
+import { use } from 'react'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [bgColor, setBgColor] = useState("light")
+
+  const clicked = (e) => {
+    console.log(e.target.value);
+    setBgColor(e.target.value);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className={`vh-100 bg-${bgColor} `}>
+      <div className="container my-3">
+        <button type="button" value="primary" className="btn btn-primary m-2" onClick={clicked}>Primary</button>
+        <button type="button" value="secondary" className="btn btn-secondary m-2" onClick={clicked}>Secondary</button>
+        <button type="button" value="success" className="btn btn-success m-2" onClick={clicked}>Success</button>
+        <button type="button" value="danger" className="btn btn-danger m-2" onClick={clicked}>Danger</button>
+        <button type="button" value="warning" className="btn btn-warning m-2" onClick={clicked}>Warning</button>
+        <button type="button" value="info" className="btn btn-info m-2" onClick={clicked}>Info</button>
+        <button type="button" value="light" className="btn btn-light m-2" onClick={clicked}>Light</button>
+        <button type="button" value="dark" className="btn btn-dark m-2" onClick={clicked}>Dark</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
